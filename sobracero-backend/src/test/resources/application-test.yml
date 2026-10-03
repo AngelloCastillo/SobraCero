@@ -1,0 +1,12 @@
+app:
+  jwt:
+    horas-expiracion: 876000   # el reloj simulado de las pruebas vive en el pasado; el JWT se valida con el reloj real
+    secreto: secreto-de-pruebas-secreto-de-pruebas-1234567890
+  admin:
+    correo: admin@test.pe
+    clave: Admin1234
+  cors:
+    origenes-permitidos: http://localhost:*
+  tareas:
+    activadas: false
+  datos-demo: false

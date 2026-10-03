@@ -1,0 +1,23 @@
+# Perfil local: PostgreSQL instalado en tu máquina (base "sobracero")
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sobracero
+    username: postgres
+    password: postgres      # <-- cambia por tu contraseña de Postgres
+  jpa:
+    show-sql: false
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secreto: dev-secreto-cambia-esto-por-uno-largo-de-al-menos-32-caracteres
+  admin:
+    correo: admin@sobracero.pe
+    clave: Admin1234
+  datos-demo: true          # crea comercios, ofertas y usuarios de demostración
+
+logging:
+  level:
+    pe.upc.sobracero: DEBUG

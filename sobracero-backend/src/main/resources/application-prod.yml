@@ -1,0 +1,23 @@
+# Perfil producción: todo viene de variables de entorno (nunca credenciales en el repo).
+# Los NOMBRES de las variables (DB_URL, JWT_SECRET...) no cambian respecto a versiones anteriores.
+spring:
+  datasource:
+    url: ${DB_URL}          # ej: jdbc:postgresql://host:5432/sobracero?sslmode=require
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: false
+
+server:
+  port: ${PORT:8080}        # Railway/Azure inyectan PORT
+  forward-headers-strategy: framework   # detrás del proxy HTTPS: Swagger usa https en vez de http
+
+app:
+  jwt:
+    secreto: ${JWT_SECRET}  # mínimo 32 caracteres
+  admin:
+    correo: ${ADMIN_EMAIL:admin@sobracero.pe}
+    clave: ${ADMIN_PASSWORD}
+  cors:
+    origenes-permitidos: ${CORS_ALLOWED_ORIGINS}
+  datos-demo: ${SEED_DEMO:false}   # true = carga datos de demostración (útil para la presentación)

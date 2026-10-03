@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: sobracero-backend
+  profiles:
+    default: dev
+  jackson:
+    default-property-inclusion: non_null
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate   # el esquema lo maneja Flyway, Hibernate solo valida
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  zona-horaria: America/Lima
+  jwt:
+    horas-expiracion: 12
+  cors:
+    # Cualquier puerto local (ng serve 4200, Live Server 5500/5501...). En producción se define por variable.
+    origenes-permitidos: http://localhost:*,http://127.0.0.1:*
+  tareas:
+    activadas: true
+    intervalo-ms: 60000
+  donacion:
+    minutos-previos: 15          # minutos antes del cierre de la ventana para derivar a donación
+  recordatorio:
+    minutos-antes-cierre: 30
+  impacto:
+    co2-kg-por-kg: 2.5           # factor de emisiones evitadas por kilo de alimento
+    distintivo-min-kg: 50        # kilos rescatados mínimos para el distintivo (US17)
+    meta-plataforma-kg: 500000   # meta: 500 toneladas
+  datos-demo: false
